@@ -1,101 +1,179 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <style>
-    body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	background: #f0f8ff; /* Light sky-blue background for contrast */
-}
-
-.pinwheel-container {
-	position: relative;
-	width: 150px;
-	height: 150px;
-}
-
-.pinwheel {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	animation: spin 2s linear infinite; /* Continuous spinning animation */
-}
-
-/* Triangular segments arranged perfectly in a circle */
-.segment {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background: none;
-	clip-path: polygon(50% 50%, 100% 0%, 100% 100%);
-	transform-origin: 50% 50%; /* Pivot around the pinwheel's center */
-}
-
-/* Individual colors and positions for each segment */
-.red {
-	background-color: #ff605c;
-	transform: rotate(0deg);
-}
-.orange {
-	background-color: #ffbd44;
-	transform: rotate(60deg);
-}
-.yellow {
-	background-color: #ffdf59;
-	transform: rotate(120deg);
-}
-.green {
-	background-color: #00ca4e;
-	transform: rotate(180deg);
-}
-.blue {
-	background-color: #26baff;
-	transform: rotate(240deg);
-}
-.purple {
-	background-color: #835fff;
-	transform: rotate(300deg);
-}
-
-/* Spinning animation */
-@keyframes spin {
-	0% {
-		transform: rotate(0deg);
+<!-- Meta View Port -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<!-- Jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- FontAwesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		
+	body {
+	    margin: 0;
+	    font-family: Roboto;
 	}
-	100% {
-		transform: rotate(360deg);
+
+	.hero-image .about-me {
+	    width: 100%;
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    right: 0;
+	    transform: translate(-50%, -50%);
+	    text-align: center;
+	    z-index: 99;
+	}
+
+	.hero-image .about-me label {
+	    font-size: 26px;
+	    color: #fff;
+	    display: block;
+	}
+	.hero-image:after {
+	    background-color: black;
+	    content: '';
+	     position: absolute; 
+	    width: 100%;
+	    left: 0;
+	    right: 0;
+	    height: 100%;
+	    opacity: 0.3;
+	}
+
+	.hero-image {
+	    background-size: cover;
+	    position: relative;
+	    width: 100%;
+	    height: 100vh;
+	    background-color: lightgray;
+	    background-image: url('https://images.unsplash.com/photo-1495465798138-718f86d1a4bc?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80');
+	    display: table;
+	      background-position: center;
+	}
+
+
+	.hero-image .about-me a {
+	    display: inline-block;
+	    text-decoration: none;
+	    color: #fff;
+	    padding: 10px 20px;
+	    border: 1px solid white;
+	    margin: 20px;
+	}
+
+
+	.navbar-demo {
+	    display: table;
+	    width: 100%;
+	    position: fixed;
+	    z-index: 99;
+	}
+
+	.navbar-demo .nav-bar ul li {
+	    display: block;
+	}
+
+	.navbar-demo .nav-bar ul {
+	    padding: 0;
+	    display: table;
+	    text-align: center;
+	    display:flex;
+	    flex-wrap:wrap;
+	    justify-content:center;
+	    align-items: center;
+	    margin: 0;
+	    padding: 0;
+	}
+
+	.navbar-demo .nav-bar ul li a {
+	    font-size: 18px;
+	    display: inline-block;
+	    text-align: center;
+	    text-decoration: none;
+	    color: #000;
+	    padding: 18px;
+	    text-transform: uppercase;
+	}
+
+	.nav-bar {
+	    text-align: center;
+	    display:flex;
+	    flex-wrap:wrap;
+	    justify-content:center;
+	    align-items: center;
+	    position: relative;
+	}
+	.navbar-demo button.menu-btn {
+	    display:none;
+	}
+
+
+
+
+
+
+
+@media only screen and (max-width: 767px){
+   .navbar-demo  button.menu-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: unset;
+        border: 0;
+        font-size: 26px;
+        display:block;
+        padding: 23px;
+        color: #fff;
+        outline: none;
+    } 
+    .navbar-demo{
+	    height:100%;
+	    z-index: 999;
+	}
+    .navbar-demo .nav-bar {
+        left: -950px;
+        background-color: #000000d9;
+        transition: 1s;
+        height: 100%;
+    }
+
+	.navbar-demo.open-nav  .nav-bar{
+	    left: 0;
+	    width: 100%;
+	    transition: left 0.5s;
+	    height: 100%;
+	}
+
+	.navbar-demo .nav-bar ul li a {
+	     display: block;
+	     color: #fff;
+	}
+	.navbar-demo.open-nav button.menu-btn i:before {
+	    content: '\f00d ';
 	}
 }
+	</style>  
 
-   </style>
-</head>
-<body>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Spinning Pinwheel</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    
-    <body>
-        <div class="pinwheel-container">
-            <div class="pinwheel">
-                <!-- 6 perfect segments forming a seamless circle -->
-                <div class="segment red"></div>
-                <div class="segment orange"></div>
-                <div class="segment yellow"></div>
-                <div class="segment green"></div>
-                <div class="segment blue"></div>
-                <div class="segment purple"></div>
-            </div>
-        </div>
-    </body>
-    
-    </html>
-</body>
-</html>
+
+<header id="header" class="navbar-demo">
+	<button type="" class="menu-btn"><i class="fa fa-bars" aria-hidden="true"></i></button>
+</header> 
+
+<div class="hero-image">
+	<div class="about-me">
+		<div class="row">
+			<label>My Name is Daffa</label>
+			<label>No. 10 || 12RPB || SMK PGRI 3</label>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function () {
+		$('.menu-btn').click(function(event) {
+			$('.navbar-demo').toggleClass('open-nav');
+		});
+	});
+</script>
